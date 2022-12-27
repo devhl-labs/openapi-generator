@@ -56,14 +56,6 @@ namespace Org.OpenAPITools.Test.Model
 
 
         /// <summary>
-        /// Test the property 'ArrayOfString'
-        /// </summary>
-        [Fact]
-        public void ArrayOfStringTest()
-        {
-            // TODO unit test for the property 'ArrayOfString'
-        }
-        /// <summary>
         /// Test the property 'ArrayArrayOfInteger'
         /// </summary>
         [Fact]
@@ -78,6 +70,14 @@ namespace Org.OpenAPITools.Test.Model
         public void ArrayArrayOfModelTest()
         {
             // TODO unit test for the property 'ArrayArrayOfModel'
+        }
+        /// <summary>
+        /// Test the property 'ArrayOfString'
+        /// </summary>
+        [Fact]
+        public void ArrayOfStringTest()
+        {
+            // TODO unit test for the property 'ArrayOfString'
         }
 
     }
