@@ -56,12 +56,12 @@ namespace Org.OpenAPITools.Test.Model
 
 
         /// <summary>
-        /// Test the property 'ClassProperty'
+        /// Test the property 'Class'
         /// </summary>
         [Fact]
-        public void ClassPropertyTest()
+        public void ClassTest()
         {
-            // TODO unit test for the property 'ClassProperty'
+            // TODO unit test for the property 'Class'
         }
 
     }
