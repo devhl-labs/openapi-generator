@@ -107,7 +107,7 @@
         {{#deprecated}}
         [Obsolete]
         {{/deprecated}}
-        public {{>PropertyDataType}} {{name}} { get; {{^isReadOnly}}set; {{/isReadOnly}}}
+        public {{#isNew}}new {{/isNew}}{{>PropertyDataType}} {{name}} { get; {{^isReadOnly}}set; {{/isReadOnly}}}
 
         {{/isEnum}}
         {{/vars}}
@@ -134,8 +134,22 @@
 
         {{/composedSchemas.oneOf}}
         {{#allVars}}
-        {{^isInherited}}
         {{^isEnum}}
+        {{#isInherited}}
+        {{#isNew}}
+        /// <summary>
+        /// {{description}}{{^description}}Gets or Sets {{{name}}}{{/description}}
+        /// </summary>{{#description}}
+        /// <value>{{.}}</value>{{/description}}
+        [JsonPropertyName("{{baseName}}")]
+        {{#deprecated}}
+        [Obsolete]
+        {{/deprecated}}
+        public new {{#isNullable}}{{#lambda.optional}}{{{datatypeWithEnum}}}{{/lambda.optional}}{{/isNullable}}{{^isNullable}}{{{datatypeWithEnum}}}{{/isNullable}} {{name}} { get; {{^isReadOnly}}set; {{/isReadOnly}}}
+
+        {{/isNew}}
+        {{/isInherited}}
+        {{^isInherited}}
         /// <summary>
         /// {{description}}{{^description}}Gets or Sets {{{name}}}{{/description}}
         /// </summary>{{#description}}
@@ -146,8 +160,8 @@
         {{/deprecated}}
         public {{#isNullable}}{{#lambda.optional}}{{{datatypeWithEnum}}}{{/lambda.optional}}{{/isNullable}}{{^isNullable}}{{{datatypeWithEnum}}}{{/isNullable}} {{name}} { get; {{^isReadOnly}}set; {{/isReadOnly}}}
 
-        {{/isEnum}}
         {{/isInherited}}
+        {{/isEnum}}
         {{/allVars}}
         {{#isAdditionalPropertiesTrue}}
         {{^parentModel}}

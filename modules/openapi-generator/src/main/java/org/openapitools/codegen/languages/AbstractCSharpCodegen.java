@@ -444,6 +444,7 @@ public abstract class AbstractCSharpCodegen extends DefaultCodegen implements Co
 
     @Override
     public ModelsMap postProcessModels(ModelsMap objs) {
+        objs = super.postProcessModels(objs);
         for (ModelMap mo : objs.getModels()) {
             CodegenModel cm = mo.getModel();
             for (CodegenProperty var : cm.vars) {
