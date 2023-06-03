@@ -636,38 +636,47 @@ namespace Org.OpenAPITools.Model
             writer.WriteNumber("enum_integer", EnumTest.EnumIntegerEnumToJsonValue(enumTest.EnumInteger));
             writer.WriteNumber("enum_integer_only", EnumTest.EnumIntegerOnlyEnumToJsonValue(enumTest.EnumIntegerOnly));
             writer.WriteNumber("enum_number", EnumTest.EnumNumberEnumToJsonValue(enumTest.EnumNumber));
+
             var enumStringRawValue = EnumTest.EnumStringEnumToJsonValue(enumTest.EnumString);
             if (enumStringRawValue != null)
                 writer.WriteString("enum_string", enumStringRawValue);
             else
                 writer.WriteNull("enum_string");
+
             var enumStringRequiredRawValue = EnumTest.EnumStringRequiredEnumToJsonValue(enumTest.EnumStringRequired);
             if (enumStringRequiredRawValue != null)
                 writer.WriteString("enum_string_required", enumStringRequiredRawValue);
             else
                 writer.WriteNull("enum_string_required");
+
             var outerEnumDefaultValueRawValue = OuterEnumDefaultValueConverter.ToJsonValue(enumTest.OuterEnumDefaultValue);
             if (outerEnumDefaultValueRawValue != null)
                 writer.WriteString("outerEnumDefaultValue", outerEnumDefaultValueRawValue);
             else
                 writer.WriteNull("outerEnumDefaultValue");
+
             var outerEnumIntegerRawValue = OuterEnumIntegerConverter.ToJsonValue(enumTest.OuterEnumInteger);
             if (outerEnumIntegerRawValue != null)
                 writer.WriteNumber("outerEnumInteger", outerEnumIntegerRawValue);
             else
                 writer.WriteNull("outerEnumInteger");
+
             var outerEnumIntegerDefaultValueRawValue = OuterEnumIntegerDefaultValueConverter.ToJsonValue(enumTest.OuterEnumIntegerDefaultValue);
             if (outerEnumIntegerDefaultValueRawValue != null)
                 writer.WriteNumber("outerEnumIntegerDefaultValue", outerEnumIntegerDefaultValueRawValue);
             else
                 writer.WriteNull("outerEnumIntegerDefaultValue");
+
             if (enumTest.OuterEnum == null)
                 writer.WriteNull("outerEnum");
-            var outerEnumRawValue = OuterEnumConverter.ToJsonValue(enumTest.OuterEnum.Value);
-            if (outerEnumRawValue != null)
-                writer.WriteString("outerEnum", outerEnumRawValue);
             else
-                writer.WriteNull("outerEnum");
+            {
+                var outerEnumRawValue = OuterEnumConverter.ToJsonValue(enumTest.OuterEnum.Value);
+                if (outerEnumRawValue != null)
+                    writer.WriteString("outerEnum", outerEnumRawValue);
+                else
+                    writer.WriteNull("outerEnum");
+            }
 
             writer.WriteEndObject();
         }
