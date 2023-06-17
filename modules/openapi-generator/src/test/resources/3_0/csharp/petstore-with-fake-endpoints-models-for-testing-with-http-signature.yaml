@@ -2292,3 +2292,24 @@ components:
           enum:
             - unknown
             - notUnknown
+    CustomerId:
+      type: object
+      properties:
+        customerId:
+          type: string
+    CustomerDetails:
+      type: object
+      properties:
+        customerId:
+          type: string
+        name:
+          type: string
+    BillingInvoice:
+      type: object
+      properties:
+        billingId:
+          type: string
+        customer:
+          oneOf:
+            - $ref: '#/components/schemas/CustomerId'
+            - $ref: '#/components/schemas/CustomerDetails'
