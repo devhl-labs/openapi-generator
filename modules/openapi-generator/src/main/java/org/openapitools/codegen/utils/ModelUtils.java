@@ -456,6 +456,11 @@ public class ModelUtils {
             return false;
         }
 
+        // var a = schema.getType() == null && schema.getProperties() != null && !schema.getProperties().isEmpty();
+//        var b = schema.getProperties() != null;
+//        var c = !schema.getProperties().isEmpty();
+
+
         return (schema instanceof ObjectSchema) ||
                 // must not be a map
                 (SchemaTypeUtil.OBJECT_TYPE.equals(schema.getType()) && !(schema instanceof MapSchema)) ||
