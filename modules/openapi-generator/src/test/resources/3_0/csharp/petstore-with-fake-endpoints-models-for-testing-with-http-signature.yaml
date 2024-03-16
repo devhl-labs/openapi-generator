@@ -1555,8 +1555,18 @@ components:
         return:
           type: integer
           format: int32
+        lock:
+          type: string
+        abstract:
+          type: string
+          nullable: true
+        unsafe:
+          type: string
       xml:
         name: Return
+      required:
+        - lock
+        - abstract
     Name:
       description: Model for testing model name same as property name
       required:

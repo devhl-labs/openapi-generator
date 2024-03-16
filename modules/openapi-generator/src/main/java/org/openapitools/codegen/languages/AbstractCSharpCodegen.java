@@ -664,18 +664,19 @@ public abstract class AbstractCSharpCodegen extends DefaultCodegen implements Co
     }
 
     private String patchPropertyName(CodegenModel model, String value) {
+        return escapeReservedWord(model, value);
         // the casing will be wrong if we just set the name to escapeReservedWord
         // if we try to fix it with camelize, underscores get stripped out
         // so test if the name was escaped and then replace var with Var
-        String tmpPropertyName = escapeReservedWord(model, value);
-        if (!value.equals(tmpPropertyName) || value.startsWith(this.invalidNamePrefix)) {
-            value = tmpPropertyName;
-            String firstCharacter = value.substring(0, 1);
-            value = value.substring(1);
-            value = firstCharacter.toUpperCase(Locale.ROOT) + value;
-        }
+        // String tmpPropertyName = escapeReservedWord(model, value);
+        // if (!value.equals(tmpPropertyName) || value.startsWith(this.invalidNamePrefix)) {
+        //     value = tmpPropertyName;
+        //     String firstCharacter = value.substring(0, 1);
+        //     value = value.substring(1);
+        //     value = firstCharacter.toUpperCase(Locale.ROOT) + value;
+        // }
 
-        return value;
+        // return value;
     }
 
     private void patchPropertyVendorExtensions(CodegenProperty property) {
@@ -1308,17 +1309,14 @@ public abstract class AbstractCSharpCodegen extends DefaultCodegen implements Co
     public String escapeReservedWord(CodegenModel model, String name) {
         name = this.escapeReservedWord(name);
 
-        return name.equalsIgnoreCase(model.getClassname())
+        return name.equals(model.getClassname())
                 ? this.invalidNamePrefix + camelize(name)
                 : name;
     }
 
     @Override
     public String escapeReservedWord(String name) {
-        if (reservedWords().contains(name) ||
-                reservedWords().contains(name.toLowerCase(Locale.ROOT)) ||
-                reservedWords().contains(camelize(sanitizeName(name))) ||
-                isReservedWord(name) ||
+        if (isReservedWord(name) ||
                 name.matches("^\\d.*")) {
             name = this.invalidNamePrefix + camelize(name);
         }
