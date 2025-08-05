@@ -314,7 +314,7 @@
             {{#oneOf}}
             {{^vendorExtensions.x-duplicated-data-type}}
             if ({{#lambda.camelcase_sanitize_param}}{{name}}{{/lambda.camelcase_sanitize_param}} != null)
-                return new {{classname}}({{#lambda.joinWithComma}}{{#lambda.camelcase_sanitize_param}}{{name}}{{/lambda.camelcase_sanitize_param}}{{#vendorExtensions.x-is-value-type}}.Value{{/vendorExtensions.x-is-value-type}}/**{{isEnum}}**/  {{#model.composedSchemas.anyOf}}{{#lambda.camelcase_sanitize_param}}{{name}}{{/lambda.camelcase_sanitize_param}}{{#vendorExtensions.x-is-value-type}}{{^isNullable}}.Value{{/isNullable}}{{/vendorExtensions.x-is-value-type}}  {{/model.composedSchemas.anyOf}}{{#allVars}}{{^isDiscriminator}}{{#lambda.camelcase_sanitize_param}}{{name}}{{/lambda.camelcase_sanitize_param}}{{#required}}ParsedValue{{/required}}  {{/isDiscriminator}}{{/allVars}}{{/lambda.joinWithComma}}); // c
+                return new {{classname}}({{#lambda.joinWithComma}}{{#lambda.camelcase_sanitize_param}}{{name}}{{/lambda.camelcase_sanitize_param}}{{#vendorExtensions.x-is-value-type}}.Value{{/vendorExtensions.x-is-value-type}}  {{#model.composedSchemas.anyOf}}{{#lambda.camelcase_sanitize_param}}{{name}}{{/lambda.camelcase_sanitize_param}}{{#vendorExtensions.x-is-value-type}}{{^isNullable}}.Value{{/isNullable}}{{/vendorExtensions.x-is-value-type}}  {{/model.composedSchemas.anyOf}}{{#allVars}}{{^isDiscriminator}}{{#lambda.camelcase_sanitize_param}}{{name}}{{/lambda.camelcase_sanitize_param}}{{#required}}ParsedValue{{/required}}  {{/isDiscriminator}}{{/allVars}}{{/lambda.joinWithComma}});
 
             {{/vendorExtensions.x-duplicated-data-type}}
             {{#-last}}
@@ -337,7 +337,6 @@
         /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, {{classname}} {{#lambda.camelcase_sanitize_param}}{{classname}}{{/lambda.camelcase_sanitize_param}}, JsonSerializerOptions jsonSerializerOptions)
         {
-            // b
             {{#lambda.trimLineBreaks}}
             {{#lambda.copyText}}
             {{#lambda.camelcase_sanitize_param}}{{classname}}{{/lambda.camelcase_sanitize_param}}
@@ -408,10 +407,8 @@
             WriteProperties(writer, {{#lambda.camelcase_sanitize_param}}{{classname}}{{/lambda.camelcase_sanitize_param}}, jsonSerializerOptions);
             writer.WriteEndObject();
             {{/lambda.trimLineBreaks}}
-            // hi
         }
 
-// a
         /// <summary>
         /// Serializes the properties of <see cref="{{classname}}" />
         /// </summary>
