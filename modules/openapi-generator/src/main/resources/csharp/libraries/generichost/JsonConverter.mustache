@@ -287,7 +287,7 @@
             {{^model.composedSchemas.anyOf}}
             {{#mappedModels}}
             if ({{#lambda.camelcase_sanitize_param}}{{model.classname}}{{/lambda.camelcase_sanitize_param}} != null)
-                return new {{classname}}({{#lambda.joinWithComma}}{{#lambda.camelcase_sanitize_param}}{{model.classname}}{{/lambda.camelcase_sanitize_param}}{{#vendorExtensions.x-is-value-type}}{{^isNullable}}.Value{{/isNullable}}{{/vendorExtensions.x-is-value-type}}  {{#model.composedSchemas.anyOf}}{{#lambda.camelcase_sanitize_param}}{{name}}{{/lambda.camelcase_sanitize_param}}{{#vendorExtensions.x-is-value-type}}{{^isNullable}}.Value{{/isNullable}}{{/vendorExtensions.x-is-value-type}}  {{/model.composedSchemas.anyOf}}{{#allVars}}{{^isDiscriminator}}{{#lambda.camelcase_sanitize_param}}{{name}}{{/lambda.camelcase_sanitize_param}}{{#required}}.Value{{nrt!}}{{^isNullable}}{{#vendorExtensions.x-is-value-type}}.Value{{/vendorExtensions.x-is-value-type}}{{/isNullable}}{{/required}}  {{/isDiscriminator}}{{/allVars}}{{/lambda.joinWithComma}}); // a
+                return new {{classname}}({{#lambda.joinWithComma}}{{#lambda.camelcase_sanitize_param}}{{model.classname}}{{/lambda.camelcase_sanitize_param}}{{#vendorExtensions.x-is-value-type}}{{^isNullable}}.Value{{/isNullable}}{{/vendorExtensions.x-is-value-type}}  {{#model.composedSchemas.anyOf}}{{#lambda.camelcase_sanitize_param}}{{name}}{{/lambda.camelcase_sanitize_param}}{{#vendorExtensions.x-is-value-type}}{{^isNullable}}.Value{{/isNullable}}{{/vendorExtensions.x-is-value-type}}  {{/model.composedSchemas.anyOf}}{{#allVars}}{{^isDiscriminator}}{{#lambda.camelcase_sanitize_param}}{{name}}{{/lambda.camelcase_sanitize_param}}{{#required}}.Value{{nrt!}}{{^isNullable}}{{#vendorExtensions.x-is-value-type}}.Value{{/vendorExtensions.x-is-value-type}}{{/isNullable}}{{/required}}  {{/isDiscriminator}}{{/allVars}}{{/lambda.joinWithComma}});
 
             {{#-last}}
             throw new JsonException();
@@ -307,7 +307,7 @@
 
             {{/-last}}
             {{/required}}
-            return new {{classname}}({{#lambda.joinWithComma}}{{#model.composedSchemas.anyOf}}{{#lambda.camelcase_sanitize_param}}{{name}}{{/lambda.camelcase_sanitize_param}}ParsedValue{{#required}}.Value{{#vendorExtensions.x-is-value-type}}{{nrt!}}.Value{{nrt!}}{{/vendorExtensions.x-is-value-type}}{{/required}}  {{/model.composedSchemas.anyOf}}{{#allVars}}{{^isDiscriminator}}{{#lambda.camelcase_sanitize_param}}{{name}}{{/lambda.camelcase_sanitize_param}}{{#required}}.Value{{nrt!}}{{^isNullable}}{{#vendorExtensions.x-is-value-type}}.Value{{nrt!}}{{/vendorExtensions.x-is-value-type}}{{/isNullable}}{{/required}}  {{/isDiscriminator}}{{/allVars}}{{/lambda.joinWithComma}}); // b
+            return new {{classname}}({{#lambda.joinWithComma}}{{#model.composedSchemas.anyOf}}{{#lambda.camelcase_sanitize_param}}{{name}}{{/lambda.camelcase_sanitize_param}}ParsedValue{{#required}}.Value{{#vendorExtensions.x-is-value-type}}{{nrt!}}.Value{{nrt!}}{{/vendorExtensions.x-is-value-type}}{{/required}}  {{/model.composedSchemas.anyOf}}{{#allVars}}{{^isDiscriminator}}{{#lambda.camelcase_sanitize_param}}{{name}}{{/lambda.camelcase_sanitize_param}}{{#required}}.Value{{nrt!}}{{^isNullable}}{{#vendorExtensions.x-is-value-type}}.Value{{nrt!}}{{/vendorExtensions.x-is-value-type}}{{/isNullable}}{{/required}}  {{/isDiscriminator}}{{/allVars}}{{/lambda.joinWithComma}});
             {{/composedSchemas.oneOf}}
             {{^model.discriminator}}
             {{#composedSchemas}}
