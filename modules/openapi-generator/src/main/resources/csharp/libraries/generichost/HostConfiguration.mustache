@@ -43,6 +43,8 @@ namespace {{packageName}}.{{clientPackage}}
             _jsonOptions.Converters.Add(new DateOnlyJsonConverter());
             _jsonOptions.Converters.Add(new DateOnlyNullableJsonConverter());
             {{/supportsDateOnly}}
+            _jsonOptions.Converters.Add(new TimeSpanJsonConverter());
+            _jsonOptions.Converters.Add(new TimeSpanNullableJsonConverter());
             {{#models}}
             {{#model}}
             {{#isEnum}}

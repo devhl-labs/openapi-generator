@@ -1095,6 +1095,8 @@ public class CSharpClientCodegen extends AbstractCSharpCodegen {
         supportingFiles.add(new SupportingFile("ApiFactory.mustache", clientPackageDir, "ApiFactory.cs"));
         supportingFiles.add(new SupportingFile("DateTimeJsonConverter.mustache", clientPackageDir, "DateTimeJsonConverter.cs"));
         supportingFiles.add(new SupportingFile("DateTimeNullableJsonConverter.mustache", clientPackageDir, "DateTimeNullableJsonConverter.cs"));
+        supportingFiles.add(new SupportingFile("TimeSpanJsonConverter.mustache", clientPackageDir, "TimeSpanJsonConverter.cs"));
+        supportingFiles.add(new SupportingFile("TimeSpanNullableJsonConverter.mustache", clientPackageDir, "TimeSpanNullableJsonConverter.cs"));
         if (useDateOnly()) {
             supportingFiles.add(new SupportingFile("DateOnlyJsonConverter.mustache", clientPackageDir, "DateOnlyJsonConverter.cs"));
             supportingFiles.add(new SupportingFile("DateOnlyNullableJsonConverter.mustache", clientPackageDir, "DateOnlyNullableJsonConverter.cs"));

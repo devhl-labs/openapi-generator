@@ -1,0 +1,45 @@
+{{>partial_header}}
+using System;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using System.Xml;
+
+namespace {{packageName}}.{{clientPackage}}
+{
+    /// <summary>
+    /// Formatter for 'duration' openapi format as defined by ISO8601
+    /// see https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#data-types
+    /// </summary>
+    {{>visibility}} class TimeSpanNullableJsonConverter : JsonConverter<TimeSpan?>
+    {
+        /// <summary>
+        /// Returns a TimeSpan from the Json object
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <param name="typeToConvert"></param>
+        /// <param name="options"></param>
+        /// <returns></returns>
+        public override TimeSpan? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        {
+            if (reader.TokenType == JsonTokenType.Null)
+                return null;
+
+            string value = reader.GetString(){{nrt!}};
+            return XmlConvert.ToTimeSpan(value);
+        }
+
+        /// <summary>
+        /// Writes the TimeSpan to the json writer in ISO 8601 duration format
+        /// </summary>
+        /// <param name="writer"></param>
+        /// <param name="timeSpanValue"></param>
+        /// <param name="options"></param>
+        public override void Write(Utf8JsonWriter writer, TimeSpan? timeSpanValue, JsonSerializerOptions options)
+        {
+            if (timeSpanValue == null)
+                writer.WriteNullValue();
+            else
+                writer.WriteStringValue(XmlConvert.ToString(timeSpanValue.Value));
+        }
+    }
+}
